@@ -38,14 +38,17 @@ if ( cp_check_permissions( 'settings_user_role' ) ) {
 			endif;
 
 			// Load option values into local PHP variables
+			$dashboard_meta_box = ( isset( $options['dashboard_meta_box'] ) ) ? $options['dashboard_meta_box'] : 'disabled';
+			$email_notifications = ( isset( $options['email_notifications'] ) ) ? $options['email_notifications'] : 'enabled';
 			$cp_rss_feed_num = ( isset( $options['num_recent_activity'] ) ) ? absint( $options['num_recent_activity'] ) : 4;
 			$num_users_display = ( isset( $options['num_users_display'] ) ) ? absint( $options['num_users_display'] ) : 10;
-			$cp_user_role = ( isset( $options['user_role'] ) ) ? esc_attr( $options['user_role'] ) : 'manage_options';
-			$cp_settings_user_role = ( isset( $options['settings_user_role'] ) ) ? esc_attr( $options['settings_user_role'] ) : 'manage_options';
-			$cp_shortcode_user_role = ( isset( $options['shortcode_user_role'] ) ) ? esc_attr( $options['shortcode_user_role'] ) : '';
-            $cp_presstrends = ( isset( $options['presstrends'] ) ) ? $options['presstrends'] : 'no';
-            $date_format = ( isset( $options['date_format'] ) ) ? $options['date_format'] : 'F j, Y';
-            $date_format_custom = ( isset( $options['date_format_custom'] ) ) ? $options['date_format_custom'] : '';
+			$cp_user_role = ( isset( $options['user_role'] ) ) ? $options['user_role'] : 'manage_options';
+			$cp_settings_user_role = ( isset( $options['settings_user_role'] ) ) ? $options['settings_user_role'] : 'manage_options';
+			$cp_shortcode_user_role = ( isset( $options['shortcode_user_role'] ) ) ? $options['shortcode_user_role'] : '';
+			$debug_mode = ( isset( $options['debug_mode'] ) ) ? $options['debug_mode'] : 'disabled';
+			$cp_presstrends = ( isset( $options['presstrends'] ) ) ? $options['presstrends'] : 'no';
+			$date_format = ( isset( $options['date_format'] ) ) ? $options['date_format'] : 'F j, Y';
+			$date_format_custom = ( isset( $options['date_format_custom'] ) ) ? $options['date_format_custom'] : '';
 
 			?>
 			<table class="form-table">
@@ -56,8 +59,8 @@ if ( cp_check_permissions( 'settings_user_role' ) ) {
 					<th scope="row"><label for="dashboard"><?php _e( 'Dashboard Meta Box', 'collabpress' ); ?></label></th>
 					<td>
 						<select name="cp_options[dashboard_meta_box]">
-							<option value="disabled" <?php selected( $options['dashboard_meta_box'], 'disabled' ); ?>><?php _e('Disabled', 'collabpress') ?></option>
-							<option value="enabled" <?php selected( $options['dashboard_meta_box'], 'enabled' ); ?>><?php _e('Enabled', 'collabpress') ?></option>
+							<option value="disabled" <?php selected( $dashboard_meta_box, 'disabled' ); ?>><?php _e('Disabled', 'collabpress') ?></option>
+							<option value="enabled" <?php selected( $dashboard_meta_box, 'enabled' ); ?>><?php _e('Enabled', 'collabpress') ?></option>
 						</select>
 					</td>
 				</tr>
@@ -65,8 +68,8 @@ if ( cp_check_permissions( 'settings_user_role' ) ) {
 					<th scope="row"><label for="email"><?php _e( 'Email Notifications', 'collabpress' ); ?></label></th>
 					<td>
 						<select name="cp_options[email_notifications]">
-							<option value="enabled" <?php selected( $options['email_notifications'], 'enabled' ); ?>><?php _e('Enabled', 'collabpress') ?></option>
-							<option value="disabled" <?php selected( $options['email_notifications'], 'disabled' ); ?>><?php _e('Disabled', 'collabpress') ?></option>
+							<option value="enabled" <?php selected( $email_notifications, 'enabled' ); ?>><?php _e('Enabled', 'collabpress') ?></option>
+							<option value="disabled" <?php selected( $email_notifications, 'disabled' ); ?>><?php _e('Disabled', 'collabpress') ?></option>
 						</select>
 					</td>
 				</tr>
@@ -179,8 +182,8 @@ if ( cp_check_permissions( 'settings_user_role' ) ) {
 					<th scope="row"><label for="debug"><?php _e( 'Debug Mode', 'collabpress' ); ?></label></th>
 					<td>
 						<select name="cp_options[debug_mode]">
-							<option value="disabled" <?php selected( $options['debug_mode'], 'disabled' ); ?>><?php _e('Disabled', 'collabpress') ?></option>
-							<option value="enabled" <?php selected( $options['debug_mode'], 'enabled' ); ?>><?php _e('Enabled', 'collabpress') ?></option>
+							<option value="disabled" <?php selected( $debug_mode, 'disabled' ); ?>><?php _e('Disabled', 'collabpress') ?></option>
+							<option value="enabled" <?php selected( $debug_mode, 'enabled' ); ?>><?php _e('Enabled', 'collabpress') ?></option>
 						</select>
 					</td>
 				</tr>
